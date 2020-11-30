@@ -14,11 +14,11 @@ int main()
     // mendapat waktu sekarang 
     waktu_sekarang = localtime(&s); 
   
-    // print time in minutes, 
-    // hours and seconds 
+     //enter user profile
     int n;
    printf("Siapa nama anda? (Enter your name) = ");
    gets(nama);
+   //nested if which output corresponds to the current time
            if (waktu_sekarang->tm_hour >= 00 && waktu_sekarang->tm_hour < 12) {
            	printf("Konichiwa %s\nButuh apa?\n",nama);
 		   task(n);
@@ -46,10 +46,12 @@ int task(int n) {
 	 printf("1.Buat Jadwal dan Teks Jadwal\n");
 		   printf("2.Reminder List\n");
 		   printf("3.Exit\n");
-		   fflush(stdin);
+		   fflush(stdin);//flush the buffer memory to input choice integer
 		   scanf("%d",&n);
 		  choice(n);
 }
+
+//modular program to input user's choice
 void choice(int n) {
 	if (n==1) {
 		jadwal();
@@ -60,13 +62,13 @@ else if(n==2) {
 else printf("Good bye");
 return 0;
 }
-
+//create schedule
 void jadwal(char nama[]){
 
 	char mon[100],tue[100],wed[100],thu[100],fri[100],sat[100],sun[100];
 	int i;
 	char jadwal[100];
-
+//flush the buffer memory so the user can input different data type
 	fflush(stdin);
 	printf("Nama Jadwal = ");
 	gets(jadwal);
@@ -86,7 +88,7 @@ void jadwal(char nama[]){
 	gets(sun);
 	
 printf("%s\n",jadwal);
-
+printf("============================\n");
 printf("Senin\t: %s\n",mon);
 printf("Selasa\t: %s\n",tue);
 printf("Rabu\t: %s\n",wed);
@@ -94,7 +96,6 @@ printf("Kamis\t: %s\n",thu);
 printf("Jumat\t: %s\n",fri);
 printf("Sabtu\t: %sa\n",sat);
 printf("Minggu\t: %s\n",sun);
-printf("Ini jadwalnya");
 
 }
 
