@@ -1,0 +1,129 @@
+#include <stdio.h> 
+#include <time.h> 
+#include <string.h>
+  int task(int K);
+  void choice(int N);
+  void jadwal();
+  void reminder();
+int main() 
+{ char nama[100];
+    time_t s; 
+    struct tm* waktu_sekarang; 
+    s = time(NULL); 
+  
+    // mendapat waktu sekarang 
+    waktu_sekarang = localtime(&s); 
+  
+    // print time in minutes, 
+    // hours and seconds 
+    int n;
+   printf("Siapa nama anda? (Enter your name) = ");
+   gets(nama);
+           if (waktu_sekarang->tm_hour >= 00 && waktu_sekarang->tm_hour < 12) {
+           	printf("Konichiwa %s\nButuh apa?\n",nama);
+		   task(n);
+		   
+		  
+		    }
+  else if (waktu_sekarang->tm_hour >= 12 && waktu_sekarang->tm_hour <= 15) {
+  
+  	printf("Siang %s\nMau Ngapain?\n",nama);
+  		   
+		   task(n);
+		   
+		 
+	  }
+  	else if (waktu_sekarang->tm_hour >= 16 && waktu_sekarang->tm_hour <= 18) {
+  	printf("Selamat Sore %s\nApa yang bisa saya lakukan?\n",nama);
+	  task(n);}
+  	else  {
+  	printf("Good night %s\nWhat do you need?\n",nama);
+  	task(n);
+  }
+    return 0; 
+} 
+int task(int n) {
+	 printf("1.Buat Jadwal dan Teks Jadwal\n");
+		   printf("2.Reminder List\n");
+		   printf("3.Exit\n");
+		   fflush(stdin);
+		   scanf("%d",&n);
+		  choice(n);
+}
+void choice(int n) {
+	if (n==1) {
+		jadwal();
+}
+else if(n==2) {
+	reminder();
+}
+else printf("Good bye");
+return 0;
+}
+
+void jadwal(char nama[]){
+
+	char mon[100],tue[100],wed[100],thu[100],fri[100],sat[100],sun[100];
+	int i;
+	char jadwal[100];
+
+	fflush(stdin);
+	printf("Nama Jadwal = ");
+	gets(jadwal);
+	printf("Isi Jadwal(Senin) : ");
+	gets(mon);
+		printf("Isi Jadwal(Selasa) : ");
+	gets(tue);
+		printf("Isi Jadwal(Rabu) : ");
+	gets(wed);
+		printf("Isi Jadwal(Kamis) : ");
+	gets(thu);
+		printf("Isi Jadwal(Jumat) : ");
+	gets(fri);
+		printf("Isi Jadwal(Sabtu) : ");
+	gets(sat);
+		printf("Isi Jadwal(Minggu) : ");
+	gets(sun);
+	
+printf("%s\n",jadwal);
+
+printf("Senin\t: %s\n",mon);
+printf("Selasa\t: %s\n",tue);
+printf("Rabu\t: %s\n",wed);
+printf("Kamis\t: %s\n",thu);
+printf("Jumat\t: %s\n",fri);
+printf("Sabtu\t: %sa\n",sat);
+printf("Minggu\t: %s\n",sun);
+printf("Ini jadwalnya");
+
+}
+
+void reminder() {
+	
+	FILE *ingat;
+int i,n;
+char remind[50];
+
+if ((ingat=fopen("ingat.txt","w")) == NULL)
+{;
+printf("failed!!! \n");
+exit(1);
+}
+
+printf("Isi Reminder List(berapa tugas dalam list) : ");
+scanf("%d",&n);
+printf("\n");
+
+for(i=1;i<=n;i++)
+{
+printf("Stuff %d : ",i);
+fflush(stdin);
+gets(remind);}
+printf("Reminder list telah dibuat di notepad");
+
+fputs(remind, ingat) ;
+fputs("\n", ingat) ;
+
+fclose(ingat);
+
+}
